@@ -3,11 +3,10 @@
     <!-- 头部区域 -->
     <el-header>
       <div>
-        <img :src="logo" />
-        <span>学生管理系统</span>
+        <span>校园快递代取管理平台</span>
       </div>
       <div>
-        <div class="user">您好,{{aname}}</div>
+        <div class="user">您好,{{ aname }}</div>
         <el-button type="danger" @click="logout">退出</el-button>
       </div>
     </el-header>
@@ -16,25 +15,10 @@
       <!-- 侧边栏 -->
       <el-aside :width="isCollapse ? '64px' : '200px'">
         <div class="toggle_button">
-          <el-button
-            size="mini"
-            class="toggle-button"
-            type="info"
-            :icon="this.isCollapse?'el-icon-arrow-right':'el-icon-arrow-left'"
-            @click="toggleCollapse"
-          ></el-button>
+          <el-button size="mini" class="toggle-button" type="info" :icon="this.isCollapse ? 'el-icon-arrow-right' : 'el-icon-arrow-left'" @click="toggleCollapse"></el-button>
         </div>
         <!-- 左边侧边菜单栏 -->
-        <el-menu
-          background-color="#000"
-          text-color="#fff"
-          active-text-color="#fff"
-          unique-opened
-          :collapse="isCollapse"
-          :collapse-transition="isTransition"
-          router
-          :default-active="$route.path"
-        >
+        <el-menu background-color="#000" text-color="#fff" active-text-color="#fff" unique-opened :collapse="isCollapse" :collapse-transition="isTransition" router :default-active="$route.path">
           <!-- 一级菜单 -->
           <el-submenu :index="item.menu_id" v-for="item in menuList" :key="item.menu_id">
             <!-- 一级菜单模板区域 -->
@@ -45,12 +29,7 @@
               <span>{{ item.name }}</span>
             </template>
             <!-- 二级菜单 -->
-            <el-menu-item
-              :index="subItem.pathname"
-              v-for="subItem in item.menuchildren"
-              :key="subItem.id"
-              @click="saveNavState(subItem.pathname)"
-            >
+            <el-menu-item :index="subItem.pathname" v-for="subItem in item.menuchildren" :key="subItem.id" @click="saveNavState(subItem.pathname)">
               <template slot="title">
                 <!-- 图标 -->
                 <i :class="subItem.icon"></i>
@@ -63,7 +42,7 @@
       </el-aside>
       <el-main>
         <router-view></router-view>
-        <el-footer>By Wu siyu. 2020.05</el-footer>
+        <el-footer>By Wu siyu. 2021.3</el-footer>
       </el-main>
     </el-container>
   </el-container>
@@ -74,31 +53,18 @@ export default {
   data() {
     return {
       aname: window.sessionStorage.getItem('aname'),
-      menuList: [],
+      menuList: [{ icon: '', name: 'wusiyu' }],
       isCollapse: false,
       isTransition: false,
-      currentPath: '',
-      logo:require("../assets/logo.png"),
+      currentPath: ''
     }
   },
 
   created() {
-    this.getMenuList()
     this.currentPath = window.sessionStorage.getItem('currentPath')
   },
 
   methods: {
-    //获取菜单
-    async getMenuList() {
-      const { data: res } = await this.$axios.get('getMenulist')
-      if (res.code !== 'success') {
-        return this.$message.error(res.message)
-      } else {
-        this.menuList = res.data
-        return this.$message.success(res.message)
-      }
-    },
-
     // 退出登录
     async logout() {
       const { data: res } = await this.$axios.get('logout')
@@ -201,7 +167,7 @@ export default {
   // border-color: #000;
 }
 .el-main {
-    background-color: #f0f2f5;
-    height: 690px;
+  background-color: #f0f2f5;
+  height: 690px;
 }
 </style>

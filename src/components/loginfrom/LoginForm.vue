@@ -38,7 +38,7 @@ export default {
   methods: {}
 }
 </script>
-<style>
+<style scoped>
 .name {
   width: 50px;
   display: flex;

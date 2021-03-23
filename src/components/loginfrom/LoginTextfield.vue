@@ -19,7 +19,7 @@ export default {
   }
 }
 </script>
-<style>
+<style scoped>
 .login_textfield {
   flex: 1;
   display: flex;

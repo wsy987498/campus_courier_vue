@@ -8,7 +8,7 @@
     <!-- main -->
     <el-container>
       <el-card class="main_box-card">
-        <div id="myChart" :style="{width: '100%', height: '600px'}"></div>
+        <div id="myChart" :style="{ width: '100%', height: '600px' }"></div>
       </el-card>
     </el-container>
   </div>
@@ -24,7 +24,7 @@ export default {
   },
   created() {},
   mounted() {
-    this.drawmap()
+    // this.drawmap()
   },
 
   methods: {

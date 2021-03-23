@@ -13,14 +13,14 @@ export default {
       type: String
     }
   },
-  data () {
+  data() {
     return {
       id: `login-checkbox-${GID++}`
     }
   }
 }
 </script>
-<style>
+<style scoped>
 .login_checkbox input {
   display: none;
 }

@@ -11,14 +11,7 @@
       <!-- 搜索与添加区域 -->
       <el-row :gutter="30">
         <el-col :span="8" class="search">
-          <el-input
-            placeholder="请输入学生姓名"
-            class="input-with-select"
-            v-model="queryInfo.student_name"
-            clearable
-            @clear="getStudentList"
-            @keyup.enter.native="getStudentList"
-          >
+          <el-input placeholder="请输入学生姓名" class="input-with-select" v-model="queryInfo.student_name" clearable @clear="getStudentList" @keyup.enter.native="getStudentList">
             <el-button class="addbtn" slot="append" icon="el-icon-search" @click="getStudentList"></el-button>
           </el-input>
         </el-col>
@@ -29,45 +22,29 @@
       </el-row>
 
       <!-- 学生列表区域 -->
-      <el-table
-        v-loading="loading"
-        :data="studentList"
-        stripe
-        border
-        :default-sort="{prop: 'student_birthday', order: 'ascending'}"
-      >
+      <el-table v-loading="loading" :data="studentList" stripe border :default-sort="{ prop: 'student_birthday', order: 'ascending' }">
         <el-table-column type="index" label="序号" align="center" width="80"></el-table-column>
         <el-table-column prop="class_id" label="班级" align="center" width="120"></el-table-column>
         <el-table-column prop="student_number" label="学号" align="center"></el-table-column>
         <el-table-column prop="student_name" label="姓名" align="center">
           <template slot-scope="scope">
-            <el-tag type="success">{{scope.row.student_name}}</el-tag>
+            <el-tag type="success">{{ scope.row.student_name }}</el-tag>
           </template>
         </el-table-column>
         <el-table-column prop="student_birthday" sortable label="出生日期" align="center"></el-table-column>
         <el-table-column prop="student_gender" label="性别" align="center" width="80">
           <template slot-scope="scope">
-            <el-tag :type="scope.row.student_gender=='男'?'' : 'danger'">{{scope.row.student_gender}}</el-tag>
+            <el-tag :type="scope.row.student_gender == '男' ? '' : 'danger'">{{ scope.row.student_gender }}</el-tag>
           </template>
         </el-table-column>
         <el-table-column prop="province_name" label="籍贯" align="center" width="100"></el-table-column>
         <el-table-column label="操作" width="180px" align="center">
           <template slot-scope="scope">
             <el-tooltip effect="dark" content="编辑" placement="top" :enterable="false">
-              <el-button
-                type="primary"
-                icon="el-icon-edit"
-                size="mini"
-                @click="editDiglogInit(scope.row)"
-              ></el-button>
+              <el-button type="primary" icon="el-icon-edit" size="mini" @click="editDiglogInit(scope.row)"></el-button>
             </el-tooltip>
             <el-tooltip effect="dark" content="删除" placement="top" :enterable="false">
-              <el-button
-                type="danger"
-                icon="el-icon-delete"
-                size="mini"
-                @click="deleteUserById(scope.row.student_id)"
-              ></el-button>
+              <el-button type="danger" icon="el-icon-delete" size="mini" @click="deleteUserById(scope.row.student_id)"></el-button>
             </el-tooltip>
           </template>
         </el-table-column>
@@ -86,13 +63,7 @@
       ></el-pagination>
 
       <!-- 添加学生对话框 -->
-      <el-dialog
-        v-loading="loading"
-        title="添加学生"
-        :visible.sync="addDiglogVisable"
-        width="35%"
-        @close="diglogClose('add')"
-      >
+      <el-dialog v-loading="loading" title="添加学生" :visible.sync="addDiglogVisable" width="35%" @close="diglogClose('add')">
         <!-- 内容主体区域 -->
         <el-form :model="addForm" :rules="formRules" ref="addFormRef" label-width="100px">
           <el-form-item label="班级" prop="class_id">
@@ -105,31 +76,16 @@
             <el-input v-model="addForm.student_name"></el-input>
           </el-form-item>
           <el-form-item label="出生日期" prop="student_birthday">
-            <el-date-picker
-              type="date"
-              placeholder="选择日期"
-              v-model="addForm.student_birthday"
-              style="width: 100%;"
-            ></el-date-picker>
+            <el-date-picker type="date" placeholder="选择日期" v-model="addForm.student_birthday" style="width: 100%;"></el-date-picker>
           </el-form-item>
           <el-form-item label="性别" prop="student_gender">
-            <el-select v-model="addForm.student_gender" placeholder="请选择"  style="width: 100%;">
-              <el-option
-                v-for="item in options"
-                :key="item.value"
-                :label="item.label"
-                :value="item.value"
-              ></el-option>
+            <el-select v-model="addForm.student_gender" placeholder="请选择" style="width: 100%;">
+              <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value"></el-option>
             </el-select>
           </el-form-item>
           <el-form-item label="籍贯" prop="province_name">
-            <el-select v-model="addForm.province_name" placeholder="请选择" @change="getProval"  style="width: 100%;">
-              <el-option
-                v-for="item in provinceList"
-                :key="item.province_id"
-                :label="item.province_name"
-                :value="item.province_name"
-              ></el-option>
+            <el-select v-model="addForm.province_name" placeholder="请选择" @change="getProval" style="width: 100%;">
+              <el-option v-for="item in provinceList" :key="item.province_id" :label="item.province_name" :value="item.province_name"></el-option>
             </el-select>
           </el-form-item>
           <el-form-item label="pro_id" prop="province_id">
@@ -144,13 +100,7 @@
       </el-dialog>
 
       <!-- 编辑学生对话框 -->
-      <el-dialog
-        v-loading="loading"
-        title="修改学生信息"
-        :visible.sync="editDiglogVisable"
-        width="35%"
-        @close="diglogClose('edit')"
-      >
+      <el-dialog v-loading="loading" title="修改学生信息" :visible.sync="editDiglogVisable" width="35%" @close="diglogClose('edit')">
         <!-- 内容主体区域 -->
         <el-form :model="editForm" :rules="formRules" ref="editFormRef" label-width="100px">
           <el-form-item label="班级" prop="class_id">
@@ -163,31 +113,16 @@
             <el-input v-model="editForm.student_name"></el-input>
           </el-form-item>
           <el-form-item label="出生日期" prop="student_birthday">
-            <el-date-picker
-              type="date"
-              placeholder="选择日期"
-              v-model="editForm.student_birthday"
-              style="width: 100%;"
-            ></el-date-picker>
+            <el-date-picker type="date" placeholder="选择日期" v-model="editForm.student_birthday" style="width: 100%;"></el-date-picker>
           </el-form-item>
-          <el-form-item label="性别" prop="student_gender" >
-            <el-select v-model="editForm.student_gender" placeholder="请选择"  style="width: 100%;">
-              <el-option
-                v-for="item in options"
-                :key="item.value"
-                :label="item.label"
-                :value="item.value"
-              ></el-option>
+          <el-form-item label="性别" prop="student_gender">
+            <el-select v-model="editForm.student_gender" placeholder="请选择" style="width: 100%;">
+              <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value"></el-option>
             </el-select>
           </el-form-item>
           <el-form-item label="籍贯" prop="province_name">
-            <el-select v-model="editForm.province_name" placeholder="请选择" @change="editgetProval"  style="width: 100%;">
-              <el-option
-                v-for="item in provinceList"
-                :key="item.province_id"
-                :label="item.province_name"
-                :value="item.province_name"
-              ></el-option>
+            <el-select v-model="editForm.province_name" placeholder="请选择" @change="editgetProval" style="width: 100%;">
+              <el-option v-for="item in provinceList" :key="item.province_id" :label="item.province_name" :value="item.province_name"></el-option>
             </el-select>
           </el-form-item>
           <el-form-item label="pro_id" prop="province_id">
@@ -263,15 +198,15 @@ export default {
           { required: true, message: '请输入学生性别', trigger: 'blur' },
           { min: 1, max: 2, message: '长度在 1 到 2 个字符', trigger: 'blur' }
         ],
-        province_name: [{ required: true ,message: '请选择学生籍贯', trigger: 'blur'}],
-        province_id: [{ required: true ,message: '请选择', trigger: 'blur'}]
+        province_name: [{ required: true, message: '请选择学生籍贯', trigger: 'blur' }],
+        province_id: [{ required: true, message: '请选择', trigger: 'blur' }]
       }
     }
   },
 
   created() {
-    this.getStudentList()
-    this.getProvince()
+    // this.getStudentList()
+    // this.getProvince()
   },
 
   methods: {

@@ -11,14 +11,7 @@
       <!-- 搜索与添加区域 -->
       <el-row :gutter="30">
         <el-col :span="8" class="search">
-          <el-input
-            placeholder="请输入专业名"
-            class="input-with-select"
-            v-model="queryInfo.major_name"
-            clearable
-            @clear="getMajorlist"
-            @keyup.enter.native="getMajorlist"
-          >
+          <el-input placeholder="请输入专业名" class="input-with-select" v-model="queryInfo.major_name" clearable @clear="getMajorlist" @keyup.enter.native="getMajorlist">
             <el-button class="addbtn" slot="append" icon="el-icon-search" @click="getMajorlist"></el-button>
           </el-input>
         </el-col>
@@ -34,26 +27,16 @@
         <el-table-column prop="major_name" label="专业" align="center"></el-table-column>
         <el-table-column prop="class_name" label="班级" align="center">
           <template slot-scope="scope">
-            <el-tag>{{scope.row.class_name}}</el-tag>
+            <el-tag>{{ scope.row.class_name }}</el-tag>
           </template>
         </el-table-column>
         <el-table-column label="操作" width="180px" align="center">
           <template slot-scope="scope">
             <el-tooltip effect="dark" content="编辑" placement="top" :enterable="false">
-              <el-button
-                type="primary"
-                icon="el-icon-edit"
-                size="mini"
-                @click="editDiglogInit(scope.row)"
-              ></el-button>
+              <el-button type="primary" icon="el-icon-edit" size="mini" @click="editDiglogInit(scope.row)"></el-button>
             </el-tooltip>
             <el-tooltip effect="dark" content="删除" placement="top" :enterable="false">
-              <el-button
-                type="danger"
-                icon="el-icon-delete"
-                size="mini"
-                @click="deleteUserById(scope.row.class_id)"
-              ></el-button>
+              <el-button type="danger" icon="el-icon-delete" size="mini" @click="deleteUserById(scope.row.class_id)"></el-button>
             </el-tooltip>
           </template>
         </el-table-column>
@@ -72,13 +55,7 @@
       ></el-pagination>
 
       <!-- 添加专业对话框 -->
-      <el-dialog
-        v-loading="loading"
-        title="添加专业及班级"
-        :visible.sync="addDiglogVisable"
-        width="35%"
-        @close="diglogClose('add')"
-      >
+      <el-dialog v-loading="loading" title="添加专业及班级" :visible.sync="addDiglogVisable" width="35%" @close="diglogClose('add')">
         <!-- 内容主体区域 -->
         <el-form :model="addForm" :rules="formRules" ref="addFormRef" label-width="100px">
           <el-form-item label="major_id" prop="major_id">
@@ -102,15 +79,9 @@
       </el-dialog>
 
       <!-- 编辑班级对话框 -->
-      <el-dialog
-        v-loading="loading"
-        title="修改班级信息"
-        :visible.sync="editDiglogVisable"
-        width="35%"
-        @close="diglogClose('edit')"
-      >
+      <el-dialog v-loading="loading" title="修改班级信息" :visible.sync="editDiglogVisable" width="35%" @close="diglogClose('edit')">
         <!-- 内容主体区域 -->
-        <el-form :model="editForm"  ref="editFormRef" label-width="100px">
+        <el-form :model="editForm" ref="editFormRef" label-width="100px">
           <el-form-item label="班级id" prop="class_id">
             <el-input v-model.number="editForm.class_id" disabled></el-input>
           </el-form-item>
@@ -184,7 +155,7 @@ export default {
   },
 
   created() {
-    this.getMajorlist()
+    // this.getMajorlist()
   },
 
   methods: {

@@ -1,6 +1,6 @@
 <template>
   <div class="login" :class="{ login__signin: isSignIn, login__signup: isSignUp }">
-    <div class="title">校园快递管理系统</div>
+    <div class="title">校园快递代取管理平台</div>
     <login-tabs @click.native="switchState" />
     <login-form />
   </div>

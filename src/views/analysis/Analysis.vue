@@ -9,12 +9,9 @@
     <el-card class="box-card firstbox">
       <!-- 用户信息 -->
       <div class="msghead">
-        <div class="avatar">
-          <img :src="touxiang" />
-        </div>
+        <div class="avatar"></div>
         <div class="title">
-          {{ aname}},
-          {{ timeFix }},
+          {{ aname }}, {{ timeFix }},
           {{ welcome }}
         </div>
       </div>
@@ -23,10 +20,10 @@
     <!-- main 专业占比和男女生人数比例图-->
     <el-container>
       <el-card class="main_box-card">
-        <div id="myChart2" :style="{width: '100%', height: '400px'}"></div>
+        <div id="myChart2" :style="{ width: '100%', height: '400px' }"></div>
       </el-card>
       <el-card class="main_box-card2">
-        <div id="myChart" :style="{width: '100%', height: '400px'}"></div>
+        <div id="myChart" :style="{ width: '100%', height: '400px' }"></div>
       </el-card>
     </el-container>
     <!-- main卡片视图区域 -->
@@ -45,14 +42,13 @@ export default {
       boy: '',
       girl: '',
       majorArr: [],
-      majorlist: [],
-      touxiang:require("../../assets/avatar.jpg"),
+      majorlist: []
     }
   },
   created() {},
   mounted() {
-    this.drawgender()
-    this.majordraw()
+    // this.drawgender()
+    // this.majordraw()
   },
 
   methods: {
@@ -309,7 +305,6 @@ export default {
             value: item.class.length
           }
           this.majorArr.push(newData)
-         
         })
       })
 

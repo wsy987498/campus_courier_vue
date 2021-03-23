@@ -6,7 +6,7 @@
     <li><span href="#">登 录</span></li>
   </ul>
 </template>
-<style>
+<style scoped>
 .login_tabs {
   display: flex;
   padding: 0 34px;
