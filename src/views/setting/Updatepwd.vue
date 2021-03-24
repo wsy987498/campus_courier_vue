@@ -9,13 +9,7 @@
     <!-- 卡片视图区域 -->
     <el-card class="box-card updatecard">
       <div class="update_box">
-        <el-form
-          :model="updateForm"
-          :rules="loginRules"
-          ref="updateFormRef"
-          label-width="100px"
-          class="update_form"
-        >
+        <el-form :model="updateForm" :rules="loginRules" ref="updateFormRef" label-width="100px" class="update_form">
           <!-- 用户名 -->
           <el-form-item prop="aname" label="用户名：">
             <el-input v-model="updateForm.aname" prefix-icon="iconfont icon-user" disabled></el-input>
@@ -23,12 +17,7 @@
 
           <!-- 密码 -->
           <el-form-item prop="apwd" label="密码：">
-            <el-input
-              v-model="updateForm.apwd"
-              prefix-icon="iconfont icon-3702mima"
-              :type="pwdType"
-              @keyup.enter.native="loginEnter"
-            >
+            <el-input v-model="updateForm.apwd" prefix-icon="iconfont icon-3702mima" :type="pwdType" @keyup.enter.native="loginEnter">
               <i slot="suffix" class="iconfont icon-showpassword" @click="showPwd"></i>
             </el-input>
           </el-form-item>
@@ -65,7 +54,8 @@ export default {
       updateForm: {
         aname: window.sessionStorage.getItem('aname'),
         apwd: '',
-        checkPass: ''
+        checkPass: '',
+        id: window.sessionStorage.getItem('id')
       },
 
       //表单验证规则
@@ -74,7 +64,7 @@ export default {
           { required: true, message: '请输入密码', trigger: 'blur' },
           { min: 3, max: 16, message: '长度在 3 到 16 个字符', trigger: 'blur' }
         ],
-        checkPass: [{required: true, validator: validatePass2, trigger: 'blur' }]
+        checkPass: [{ required: true, validator: validatePass2, trigger: 'blur' }]
       },
 
       //password init状态
@@ -101,18 +91,18 @@ export default {
         //验证通过 发起ajax请求 否则return
         if (!valid) return
 
-        const { data: res } = await this.$axios.post('updatePwd', this.updateForm)
-        if (res.code !== 'success') {
-          this.$message.error(res.message)
-          this.resetUpdateForm()
-        } else {
-          this.$message.success(res.message)
+        const { data: res } = await this.$axios.post('/updatePassword', this.updateForm)
+        if (res.code == 200) {
+          this.$message.success(res.msg)
           setTimeout(() => {
             this.$message.error('请重新登录！')
+            window.sessionStorage.clear()
           }, 1500)
           setTimeout(() => {
             this.$router.push('/login')
           }, 3000)
+        } else {
+          this.resetUpdateForm()
         }
       })
     }

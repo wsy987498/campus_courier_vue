@@ -19,13 +19,6 @@ const Home = () =>
 const Analysis = () =>
     import( /* webpackChunkName: "Analysis" */ '../views/analysis/Analysis.vue')
 
-//Source
-const Source = () =>
-    import( /* webpackChunkName: "Source" */ '../views/analysis/Source.vue')
-
-//Majorlist
-const Majorlist = () =>
-    import( /* webpackChunkName: "Majorlist" */ '../views/major/Majorlist.vue')
 
 //StudentList
 const StudentList = () =>
@@ -60,14 +53,6 @@ const router = new Router({
             name: 'analysis', //analysis页面
             path: '/analysis',
             component: Analysis
-        }, {
-            name: 'source', //source页面
-            path: '/source',
-            component: Source
-        }, {
-            name: 'majorlist', //majorlist页面
-            path: '/majorlist',
-            component: Majorlist
         }, {
             name: 'studentlist', //studentlist页面
             path: '/studentlist',

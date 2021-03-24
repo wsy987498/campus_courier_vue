@@ -35,7 +35,10 @@ export default {
           this.$message.success(res.msg)
           window.sessionStorage.setItem('token', res.token)
           window.sessionStorage.setItem('aname', res.username)
-          this.$router.push('/home')
+          window.sessionStorage.setItem('id', res.id)
+          setTimeout(() => {
+            this.$router.push('/home')
+          }, 500)
         } else {
           this.$message.error(res.msg)
           this.loginForm.username = ''

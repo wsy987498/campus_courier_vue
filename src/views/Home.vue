@@ -54,8 +54,9 @@ export default {
     return {
       aname: window.sessionStorage.getItem('aname'),
       menuList: [
-        { icon: '', name: '一级菜单', menu_id: '1', menuchildren: [{ icon: '', name: '二级菜单', pathname: '/studentlist' }] },
-        { icon: '', name: '一级菜单', menu_id: '2', menuchildren: [{ icon: '', name: '二级菜单', pathname: '/updatepwd' }] }
+        { first_icon: 'el-icon-data-analysis', name: '统计分析', menu_id: '1', menuchildren: [{ icon: '', name: '统计分析', pathname: '/analysis' }] },
+        { first_icon: 'el-icon-user-solid', name: '用户管理', menu_id: '2', menuchildren: [{ icon: 'el-icon-tickets', name: '用户列表', pathname: '/studentlist' }] },
+        { first_icon: 'el-icon-s-tools', name: '设置', menu_id: '3', menuchildren: [{ icon: 'el-icon-edit-outline', name: '修改密码', pathname: '/updatepwd' }] }
       ],
       isCollapse: false,
       isTransition: false,
@@ -70,18 +71,14 @@ export default {
   methods: {
     // 退出登录
     async logout() {
-      const { data: res } = await this.$axios.get('logout')
-      // console.log(res);
-      if (res.code !== 'success') {
-        this.$message.error(res.message)
-      } else {
-        //退出成功
-        this.$message.success(res.message)
+      //退出成功
+      this.$message.success('退出成功')
+      setTimeout(() => {
         //清空sessionStorage
         window.sessionStorage.clear()
         //跳转到登录页面
         this.$router.push('/login')
-      }
+      }, 800)
     },
 
     // 点击按钮折叠左侧菜单
