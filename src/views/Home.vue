@@ -55,8 +55,8 @@ export default {
       aname: window.sessionStorage.getItem('aname'),
       menuList: [
         { first_icon: 'el-icon-data-analysis', name: '统计分析', menu_id: '1', menuchildren: [{ icon: '', name: '统计分析', pathname: '/analysis' }] },
-        { first_icon: 'el-icon-user-solid', name: '用户管理', menu_id: '2', menuchildren: [{ icon: 'el-icon-tickets', name: '用户列表', pathname: '/studentlist' }] },
-        { first_icon: 'el-icon-s-tools', name: '设置', menu_id: '3', menuchildren: [{ icon: 'el-icon-edit-outline', name: '修改密码', pathname: '/updatepwd' }] }
+        { first_icon: 'el-icon-user-solid', name: '用户管理', menu_id: '2', menuchildren: [{ icon: 'el-icon-tickets', name: '用户列表', pathname: '/userlist' }] },
+        { first_icon: 'el-icon-s-tools', name: '系统设置', menu_id: '3', menuchildren: [{ icon: 'el-icon-edit-outline', name: '修改密码', pathname: '/updatepwd' }] }
       ],
       isCollapse: false,
       isTransition: false,

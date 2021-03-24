@@ -20,9 +20,9 @@ const Analysis = () =>
     import( /* webpackChunkName: "Analysis" */ '../views/analysis/Analysis.vue')
 
 
-//StudentList
-const StudentList = () =>
-    import( /* webpackChunkName: "StudentList" */ '../views/student/Studentlist.vue')
+//userlist
+const userlist = () =>
+    import( /* webpackChunkName: "userlist" */ '../views/user/userlist.vue')
 
 //Updatepwd
 const Updatepwd = () =>
@@ -54,9 +54,9 @@ const router = new Router({
             path: '/analysis',
             component: Analysis
         }, {
-            name: 'studentlist', //studentlist页面
-            path: '/studentlist',
-            component: StudentList
+            name: 'userlist', //userlist页面
+            path: '/userlist',
+            component: userlist
         }, {
             name: 'updatepwd', //updatepwd页面
             path: '/updatepwd',
