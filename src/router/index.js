@@ -24,6 +24,10 @@ const Analysis = () =>
 const userlist = () =>
     import( /* webpackChunkName: "userlist" */ '../views/user/userlist.vue')
 
+//expresslist
+const expresslist = () =>
+    import( /* webpackChunkName: "userlist" */ '../views/express/expresslist.vue')
+
 //Updatepwd
 const Updatepwd = () =>
     import( /* webpackChunkName: "Updatepwd" */ '../views/setting/Updatepwd.vue')
@@ -61,7 +65,11 @@ const router = new Router({
             name: 'updatepwd', //updatepwd页面
             path: '/updatepwd',
             component: Updatepwd
-        },]
+        }, {
+            name: 'expresslist', //updatepwd页面
+            path: '/expresslist',
+            component: expresslist
+        }]
     },
     {
         name: '404', //welcome

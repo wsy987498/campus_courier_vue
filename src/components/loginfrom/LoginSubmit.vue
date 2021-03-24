@@ -30,7 +30,7 @@ export default {
       if (isnull) return
       try {
         const { data: res } = await this.$axios.post('login', this.loginForm)
-        console.log(res)
+        // console.log(res)
         if (res.code == 200) {
           this.$message.success(res.msg)
           window.sessionStorage.setItem('token', res.token)

@@ -22,6 +22,7 @@
       </el-row>
 
       <el-table v-loading="loading" :data="userlist" stripe border :default-sort="{ prop: 'student_birthday', order: 'ascending' }">
+        <el-table-column type="index" label="序号" align="center" width="80"></el-table-column>
         <el-table-column prop="id" label="id" align="center" width="80"></el-table-column>
         <el-table-column prop="username" label="姓名" align="center">
           <template slot-scope="scope">
@@ -47,7 +48,7 @@
         @size-change="handleSizeChange"
         @current-change="handleCurrentChange"
         :current-page="queryInfo.pagenum"
-        :page-sizes="[2, 5]"
+        :page-sizes="[5]"
         :page-size="queryInfo.pagesize"
         layout="total,sizes, prev, pager, next"
         :total="total"
@@ -161,7 +162,7 @@ export default {
     async getuserlist() {
       this.loading = true
       try {
-        const { data: res } = await this.$axios.get('/userlist')
+        const { data: res } = await this.$axios.post('/userlist', this.queryInfo)
         // console.log(res)
         if (res.code == 200) {
           this.loading = false
