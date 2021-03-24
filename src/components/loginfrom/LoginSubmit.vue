@@ -28,17 +28,21 @@ export default {
     async login() {
       const isnull = this.isNull()
       if (isnull) return
-      const { data: res } = await this.$axios.post('login', this.loginForm)
-      console.log(res)
-      if (res.code == 200) {
-        this.$message.success(res.msg)
-        window.sessionStorage.setItem('token', res.token)
-        window.sessionStorage.setItem('aname', res.username)
-        this.$router.push('/home')
-      } else {
-        this.$message.error(res.msg)
-        this.loginForm.username = ''
-        this.loginForm.password = ''
+      try {
+        const { data: res } = await this.$axios.post('login', this.loginForm)
+        console.log(res)
+        if (res.code == 200) {
+          this.$message.success(res.msg)
+          window.sessionStorage.setItem('token', res.token)
+          window.sessionStorage.setItem('aname', res.username)
+          this.$router.push('/home')
+        } else {
+          this.$message.error(res.msg)
+          this.loginForm.username = ''
+          this.loginForm.password = ''
+        }
+      } catch (error) {
+        if (error) return this.$message.error('Network Error')
       }
     },
     async register() {

@@ -53,7 +53,10 @@ export default {
   data() {
     return {
       aname: window.sessionStorage.getItem('aname'),
-      menuList: [{ icon: '', name: 'wusiyu' }],
+      menuList: [
+        { icon: '', name: '一级菜单', menu_id: '1', menuchildren: [{ icon: '', name: '二级菜单', pathname: '/studentlist' }] },
+        { icon: '', name: '一级菜单', menu_id: '2', menuchildren: [{ icon: '', name: '二级菜单', pathname: '/updatepwd' }] }
+      ],
       isCollapse: false,
       isTransition: false,
       currentPath: ''

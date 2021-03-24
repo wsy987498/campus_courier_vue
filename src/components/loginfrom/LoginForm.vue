@@ -38,7 +38,7 @@ export default {
   methods: {}
 }
 </script>
-<style scoped>
+<style>
 .name {
   width: 50px;
   display: flex;
@@ -58,7 +58,7 @@ export default {
   display: flex;
   flex: 1;
 }
-/* .login_text .login_textfield {
+.login_text .login_textfield {
   border-radius: 0;
 }
 .login_text .login_textfield:first-child {
@@ -66,7 +66,7 @@ export default {
 }
 .login_text .login_textfield:last-child {
   border-radius: 0 2px 2px 0;
-} */
+}
 .login__signup .login_form_r5 {
   opacity: 0;
   transform: translateY(100%);

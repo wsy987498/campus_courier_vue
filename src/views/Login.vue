@@ -19,6 +19,7 @@ export default {
       state: 1
     }
   },
+
   computed: {
     isSignIn() {
       return this.state === 1
@@ -30,6 +31,7 @@ export default {
   methods: {
     switchState() {
       this.state = this.state === 1 ? 2 : 1
+      // console.log(this.state)
     }
   }
 }
