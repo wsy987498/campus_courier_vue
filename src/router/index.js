@@ -25,8 +25,16 @@ const userlist = () =>
     import( /* webpackChunkName: "userlist" */ '../views/user/userlist.vue')
 
 //expresslist
+const expresslistfinish = () =>
+    import( /* webpackChunkName: "userlist" */ '../views/express/expresslistfinish.vue')
+
 const expresslist = () =>
     import( /* webpackChunkName: "userlist" */ '../views/express/expresslist.vue')
+const expresslist_isReceving = () =>
+    import( /* webpackChunkName: "userlist" */ '../views/express/expresslist_isReceving.vue')
+const expresslist_isDeliving = () =>
+    import( /* webpackChunkName: "userlist" */ '../views/express/expresslist_isDeliving.vue')
+
 
 //Updatepwd
 const Updatepwd = () =>
@@ -66,10 +74,26 @@ const router = new Router({
             path: '/updatepwd',
             component: Updatepwd
         }, {
-            name: 'expresslist', //updatepwd页面
+            name: 'expresslistfinish',
+            path: '/expresslistfinish',
+            component: expresslistfinish
+        },
+        {
+            name: 'expresslist',
             path: '/expresslist',
             component: expresslist
-        }]
+        },
+        {
+            name: 'expresslist_isReceving',
+            path: '/expresslist_isReceving',
+            component: expresslist_isReceving
+        },
+        {
+            name: 'expresslist_isDeliving',
+            path: '/expresslist_isDeliving',
+            component: expresslist_isDeliving
+        }
+        ]
     },
     {
         name: '404', //welcome

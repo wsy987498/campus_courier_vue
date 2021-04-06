@@ -3,7 +3,7 @@
     <el-breadcrumb separator-class="el-icon-arrow-right">
       <el-breadcrumb-item :to="{ path: '/home' }">首页</el-breadcrumb-item>
       <el-breadcrumb-item>快递管理</el-breadcrumb-item>
-      <el-breadcrumb-item>待接单列表</el-breadcrumb-item>
+      <el-breadcrumb-item>派送中列表</el-breadcrumb-item>
     </el-breadcrumb>
 
     <!-- 卡片视图区域 -->
@@ -119,7 +119,7 @@ export default {
     async searchexpresslist() {
       this.loading = true
       try {
-        const { data: res } = await this.$axios.post('/searchexpressshoujianren', this.queryInfo)
+        const { data: res } = await this.$axios.post('/searchgethavetotakeexpress_list', this.queryInfo)
         console.log(res)
         if (res.code == 200) {
           this.loading = false
@@ -139,7 +139,7 @@ export default {
     async getfinishexpress() {
       this.loading = true
       try {
-        const { data: res } = await this.$axios.post('/getwaitexpresslist', this.queryInfo)
+        const { data: res } = await this.$axios.post('/gethavetotakeexpress_list', this.queryInfo)
         console.log(res)
         if (res.code == 200) {
           this.loading = false
@@ -188,7 +188,7 @@ export default {
       }
       this.loading = true
       try {
-        const { data: res } = await this.$axios.post('/delwaitexpresslist', { id })
+        const { data: res } = await this.$axios.post('/delgethavetotakeexpress_list', { id })
         if (res.code == 200) {
           this.$message.success(res.msg)
           this.loading = false
