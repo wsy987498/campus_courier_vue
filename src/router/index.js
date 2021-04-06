@@ -47,7 +47,7 @@ Vue.use(Router);
 
 // 3、实例化并且配置
 const router = new Router({
-    mode: 'history',
+    // mode: 'history',
     routes: [{
         path: '/',
         redirect: '/login' //重定向
