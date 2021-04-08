@@ -24,12 +24,12 @@
       <el-table v-loading="loading" :data="userlist" stripe border :default-sort="{ prop: 'student_birthday', order: 'ascending' }">
         <el-table-column type="index" label="序号" align="center" width="80"></el-table-column>
         <el-table-column prop="id" label="id" align="center" width="80"></el-table-column>
-        <el-table-column prop="username" label="姓名" align="center">
+        <el-table-column prop="username" label="用户名" align="center">
           <template slot-scope="scope">
             <el-tag type="success">{{ scope.row.username }}</el-tag>
           </template>
         </el-table-column>
-        <el-table-column prop="password" label="密码" align="center"></el-table-column>
+        <!-- <el-table-column prop="password" label="密码" align="center"></el-table-column> -->
         <el-table-column label="操作" width="180px" align="center">
           <template slot-scope="scope">
             <el-tooltip effect="dark" content="编辑" placement="top" :enterable="false">
@@ -58,11 +58,11 @@
       <el-dialog v-loading="loading" title="添加用户" :visible.sync="addDiglogVisable" width="35%" @close="diglogClose('add')">
         <!-- 内容主体区域 -->
         <el-form :model="addForm" :rules="formRules" ref="addFormRef" label-width="100px">
-          <el-form-item label="姓名" prop="username">
+          <el-form-item label="用户名" prop="username">
             <el-input v-model="addForm.username"></el-input>
           </el-form-item>
           <el-form-item label="密码" prop="password">
-            <el-input v-model="addForm.password"></el-input>
+            <el-input v-model="addForm.password" show-password></el-input>
           </el-form-item>
         </el-form>
         <!-- 底部区域 -->
@@ -79,11 +79,11 @@
           <el-form-item label="id" prop="id">
             <el-input v-model="editForm.id" disabled></el-input>
           </el-form-item>
-          <el-form-item label="姓名" prop="username">
+          <el-form-item label="用户名" prop="username">
             <el-input v-model="editForm.username"></el-input>
           </el-form-item>
           <el-form-item label="密码" prop="password">
-            <el-input v-model="editForm.password"></el-input>
+            <el-input v-model="editForm.password" show-password></el-input>
           </el-form-item>
         </el-form>
         <!-- 底部区域 -->

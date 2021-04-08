@@ -24,8 +24,8 @@ require('echarts/map/js/china')
 Vue.prototype.$echarts = echarts
 
 //配置请求的根路径
-// axios.defaults.baseURL = 'http://localhost:9000/admin/' //本地环境
-axios.defaults.baseURL = 'http://39.108.117.83/admin/' //上线地址
+axios.defaults.baseURL = 'http://localhost:9000/admin/' //本地环境
+// axios.defaults.baseURL = 'http://39.108.117.83/admin/' //上线地址
 axios.interceptors.request.use(config => {
     NProgress.start();
     config.headers.Authorization = window.sessionStorage.getItem('token');

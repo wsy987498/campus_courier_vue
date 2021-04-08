@@ -19,26 +19,26 @@
 
       <el-table v-loading="loading" :data="expresslist" stripe border>
         <el-table-column type="index" label="序号" align="center" width="80"></el-table-column>
-        <el-table-column prop="express_id" label="id" align="center" width="80"></el-table-column>
-        <el-table-column prop="express_name" label="快递公司" align="center">
+        <el-table-column prop="istake_express_id" label="id" align="center" width="80"></el-table-column>
+        <el-table-column prop="istake_express_name" label="快递公司" align="center">
           <template slot-scope="scope">
-            <el-tag type="success">{{ scope.row.express_name }}</el-tag>
+            <el-tag type="success">{{ scope.row.istake_express_name }}</el-tag>
           </template>
         </el-table-column>
-        <el-table-column prop="express_recipients" label="收件人" align="center"></el-table-column>
-        <el-table-column prop="phone" label="电话" align="center"></el-table-column>
-        <el-table-column prop="express_type" label="快递类型" align="center"></el-table-column>
-        <el-table-column prop="delivery_address" label="配送地址" align="center"></el-table-column>
+        <el-table-column prop="istake_express_recipients" label="收件人" align="center"></el-table-column>
+        <el-table-column prop="istake_phone" label="电话" align="center"></el-table-column>
+        <el-table-column prop="istake_express_type" label="快递类型" align="center"></el-table-column>
+        <el-table-column prop="istake_delivery_address" label="配送地址" align="center"></el-table-column>
 
-        <el-table-column prop="create_time" label="完成配送时间" align="center">
+        <el-table-column prop="istake_create_time" label="完成配送时间" align="center">
           <template slot-scope="scope">
-            {{ scope.row.create_time | stepDateFilter }}
+            {{ scope.row.istake_create_time | stepDateFilter }}
           </template>
         </el-table-column>
         <el-table-column label="操作" width="180px" align="center">
           <template slot-scope="scope">
             <el-tooltip effect="dark" content="删除" placement="top" :enterable="false">
-              <el-button type="danger" icon="el-icon-delete" size="mini" @click="deleteUserById(scope.row.express_id)"></el-button>
+              <el-button type="danger" icon="el-icon-delete" size="mini" @click="deleteUserById(scope.row.istake_express_id)"></el-button>
             </el-tooltip>
           </template>
         </el-table-column>
